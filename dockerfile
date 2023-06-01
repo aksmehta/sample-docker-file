@@ -1,10 +1,16 @@
-# This dockerfile utilizes components licensed by their respective owners/authors.
-# Prior to utilizing this file or resulting images please review the respective licenses at: https://github.com/django/django/blob/master/LICENSE
+# Sample Dockerfile
 
-FROM python
+# Indicates that the windowsservercore image will be used as the base image.
+FROM mcr.microsoft.com/windows/servercore:ltsc2019
 
-LABEL Description="Django" Vendor="Django Software Foundation" Version="3.2.9"
+# Metadata indicating an image maintainer.
+LABEL maintainer="jshelton@contoso.com"
 
-RUN ["pip", "install", "Django==3.2.9"]
+# Uses dism.exe to install the IIS role.
+RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 
-CMD ["Hello World"]
+# Creates an HTML file and adds content to this file.
+RUN echo "Hello World - Dockerfile" > c:\inetpub\wwwroot\index.html
+
+# Sets a command or process that will run each time a container is run from the new image.
+CMD [ "cmd" ]
