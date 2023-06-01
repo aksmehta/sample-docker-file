@@ -10,7 +10,7 @@ LABEL maintainer="hackathon.com"
 RUN dism.exe /online /enable-feature /all /featurename:iis-webserver /NoRestart
 
 # Creates an HTML file and adds content to this file.
-RUN echo "Hello from Akshat and Aqil inside hackathon Demo, All the Best > c:\inetpub\wwwroot\index.html
+RUN echo "Hello from Akshat and Aqil inside hackathon Demo, All the Best" > c:\inetpub\wwwroot\index.html
 
 # Sets a command or process that will run each time a container is run from the new image.
 CMD [ "cmd" ]
